@@ -1,28 +1,30 @@
 #pragma once
 #include <iostream>
+#include <math.h>
 
 typedef struct Map {
-	int Sectors[9][4] = { { 1,  2,  NULL, NULL },
-						  { 1,  2,  4,    NULL },
-					      { 2,  5,  NULL, NULL },
-						  { 3,  6,  8,    NULL },
-						  { 4,  6,  7,    9 },
-						  { 5,  7,  10,   NULL },
-						  { 8,  11, NULL, NULL },
-						  { 9,  11, 12,	  NULL },
-						  { 10, 12, NULL, NULL } };
+	int Sectors[9][4] = { { 0,  2,  NULL, NULL },
+						  { 0,  1,  3,    NULL },
+					      { 1,  4,  NULL, NULL },
+						  { 2,  5,  7,    NULL },
+						  { 3,  5,  6,    8 },
+						  { 4,  6,  9,    NULL },
+						  { 7,  10, NULL, NULL },
+						  { 8,  10, 11,	  NULL },
+						  { 9,  11, NULL, NULL } };
 
-	int Edges[12][2] = { { 1, 2 },
-						 { 2, 3 },
-						 { 1, 4 },
-						 { 2, 5 },
-						 { 3, 6 },
-						 { 4, 5 },
-						 { 5, 6 },
-						 { 4, 7 },
-						 { 5, 8 },
-						 { 7, 8 },
-						 { 8, 9 } };
+	int Edges[12][2] = { { 0, 1 }, /*1*/
+						 { 1, 2 }, /*2*/
+						 { 0, 3 }, /*3*/
+						 { 1, 4 }, /*4*/
+						 { 2, 5 }, /*5*/
+						 { 3, 4 }, /*6*/
+						 { 4, 5 }, /*7*/
+						 { 3, 6 }, /*8*/
+						 { 4, 7 }, /*9*/
+						 { 5, 8 }, /*10*/
+						 { 6, 7 }, /*11*/
+						 { 7, 8 }  /*12*/};
 } Map;
 
 class Auto {
@@ -34,7 +36,7 @@ private:
 	Map map;
 public:
 	Auto();
-	void choose_edge();
+	void run();
 	void get_sector();
 	void drive();
 };
