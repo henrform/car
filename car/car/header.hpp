@@ -29,9 +29,11 @@ typedef struct Map {
 
 class Auto {
 private:
+	int *prev_sector;
+	int *curr_sector;
+	int *next_sector;
 	int *curr_edge;
 	int *edge[4];
-	int *sector;
 	int *drive_to_edge;
 	Map map;
 public:
